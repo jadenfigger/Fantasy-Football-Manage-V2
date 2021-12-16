@@ -94,7 +94,6 @@
     <Compile Include="ScheduleManager.Designer.cs">
       <DependentUpon>ScheduleManager.cs</DependentUpon>
     </Compile>
-    <Compile Include="ScheduleModel.cs" />
     <Compile Include="SqlDataAccess.cs" />
     <Compile Include="TeamModel.cs" />
     <Compile Include="WebScraper.cs" />

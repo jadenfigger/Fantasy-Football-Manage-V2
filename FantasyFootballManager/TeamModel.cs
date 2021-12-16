@@ -12,13 +12,15 @@ namespace ProjectController
         public string TeamName;
         public int Wins = 0;
         public int Losses = 0;
-
-        public Dictionary<int, List<int>> playerTotals;
         public int totalPoints;
+
+        public Dictionary<int, List<double>> PlayerTotals;
         public TeamModel(string name=null)
         {
             TeamName = name;
             PlayerHistory = new Dictionary<int, Dictionary<int, PlayerModel>>();
+            PlayerTotals = new Dictionary<int, List<double>>();
+
             //if (teamHistoryData != null)
             //{
             //    PlayerHistory = teamHistoryData;

@@ -20,16 +20,7 @@ namespace FantasyFootballManager
         }
         private void LeagueManagment_Load(object sender, EventArgs e)
         {
-            if (ProjectControllerData.cLeague == null)
-            {
-                ProjectControllerData.cLeague = new LeagueModel("Test", 4, 1, 10);
-                ProjectControllerData.cLeague.Teams.Add(new TeamModel("team1"));
-                ProjectControllerData.cLeague.Teams.Add(new TeamModel("team2"));
-                ProjectControllerData.cLeague.Teams.Add(new TeamModel("team3"));
-                ProjectControllerData.cLeague.Teams.Add(new TeamModel("team4"));
 
-                ProjectControllerData.cLeague.GenerateRandomSchedule();
-            }
         }
         private void label9_Click(object sender, EventArgs e)
         {
@@ -44,26 +35,23 @@ namespace FantasyFootballManager
                 teamsGridView.Rows[teamsGridView.Rows.Count - 1].Height = 35;
             }
 
-            txtSWeek.Text = ProjectControllerData.cLeague.StartWeek.ToString();
             txtEWeek.Text = ProjectControllerData.cLeague.EndWeek.ToString();
-            txtCWeek.Text = ProjectControllerData.cWeek.ToString();
-
-
+            txtCWeek.Text = ProjectControllerData.cLeague.CurrWeek.ToString();
         }
 
         private void tabPage2_Enter(object sender, EventArgs e)
         {
             playerMatchupGrid.Rows.Clear();
-            for (var i = 0; i < ProjectControllerData.cLeague.Schedule.Schedule[ProjectControllerData.cWeek].Count; i++)
+            for (var i = 0; i < ProjectControllerData.cLeague.Schedule[ProjectControllerData.cLeague.CurrWeek].Count; i++)
             {
-                var team1Name = ProjectControllerData.cLeague.Schedule.Schedule[ProjectControllerData.cWeek][i][0].ToString();
-                var team2Name = ProjectControllerData.cLeague.Schedule.Schedule[ProjectControllerData.cWeek][i][1].ToString();
+                var team1Name = ProjectControllerData.cLeague.Schedule[ProjectControllerData.cLeague.CurrWeek][i][0].ToString();
+                var team2Name = ProjectControllerData.cLeague.Schedule[ProjectControllerData.cLeague.CurrWeek][i][1].ToString();
 
                 playerMatchupGrid.Rows.Add(team1Name, "", team2Name);
                 playerMatchupGrid.Rows[i].Height = 35;
             }
 
-            txtCurrentWeektb2.Text = ProjectControllerData.cWeek.ToString();
+            txtCurrentWeektb2.Text = ProjectControllerData.cLeague.CurrWeek.ToString();
 
             lineupsGrid.Rows.Clear();
             FillCurrentPlayersLineup();
@@ -97,91 +85,177 @@ namespace FantasyFootballManager
 
                 cLineupSave.Add(new List<PlayerModel>());
 
-                cLineupSave[cLineupSave.Count - 1].Add(new PlayerModel("Kyler Murray", "1999-2021", "Car", "MurrKy00"));
-                cLineupSave[cLineupSave.Count - 1].Add(new PlayerModel("Tom Brady", "1999-2021", "Car", "BradTo00"));
-                cLineupSave[cLineupSave.Count - 1].Add(new PlayerModel("Jonathan Taylor", "1999-2021", "Car", "TaylJo02"));
-                cLineupSave[cLineupSave.Count - 1].Add(new PlayerModel("Derrick Henry", "1999-2021", "Car", "HenrDe00"));
-                cLineupSave[cLineupSave.Count - 1].Add(new PlayerModel("Cooper Kupp", "1999-2021", "Car", "KuppCo00"));
-                cLineupSave[cLineupSave.Count - 1].Add(new PlayerModel("Chris Godwin", "1999-2021", "Car", "GodwCh00"));
-
-                //cLineupSave.Add(new List<PlayerModel>());
-                //var temp = team.PlayerHistory;
-                //foreach (var player in team.PlayerHistory[ProjectControllerData.cWeek].Values)
-                //{
-                //    cLineupSave[cLineupSave.Count - 1].Add(player);
-                //}
+                foreach (var player in team.PlayerHistory[ProjectControllerData.cLeague.CurrWeek].Values)
+                {
+                    cLineupSave[cLineupSave.Count - 1].Add(player);
+                }
             }
         }
 
         private void btnCalculateTotalsMain_Click(object sender, EventArgs e)
         {
+            CalculatePointsForCWeek();
+
+            for (var i = 0; i < ProjectControllerData.cLeague.Teams.Count; i++) 
+            {
+                lineupsGrid.Rows[i].Cells[4].Value = ProjectControllerData.cLeague.Teams[i].PlayerTotals[ProjectControllerData.cLeague.CurrWeek][3].ToString();
+            }
+
+        }
+
+        public void CalculatePointsForCWeek()
+        {
+            ProjectControllerData.cLeague.PointCalculationVariables = new List<double>() { Convert.ToDouble(txtPassBonus.Text), Convert.ToDouble(txtRushBonus.Text), Convert.ToDouble(txtRecBonus.Text), Convert.ToDouble(txtPassYds.Text), Convert.ToDouble(txtPassTds.Text), Convert.ToDouble(txtPassCmp.Text), Convert.ToDouble(txtRushYds.Text), Convert.ToDouble(txtRushAtt.Text), Convert.ToDouble(txtRushTds.Text), Convert.ToDouble(txtRec.Text), Convert.ToDouble(txtRecTds.Text), Convert.ToDouble(txtRecYds.Text) };
+
+            FillCurrentPlayersLineup();
+
             foreach (var team in cLineupSave)
             {
-                foreach (var player in team)
+                var temp = ProjectControllerData.cLeague.Teams[cLineupSave.IndexOf(team)];
+                if (ProjectControllerData.cLeague.Teams[cLineupSave.IndexOf(team)].PlayerTotals.Count < ProjectControllerData.cLeague.CurrWeek)
                 {
-                    var playerStatsList = WebScraper.GetPlayerStats(player.ID);
+                    ProjectControllerData.cLeague.Teams[cLineupSave.IndexOf(team)].PlayerTotals.Add(ProjectControllerData.cLeague.CurrWeek, new List<double>());
 
-                    var playerTotal = CalculatePointTotal(playerStatsList);
-
+                    ProjectControllerData.cLeague.Teams[cLineupSave.IndexOf(team)].PlayerTotals[ProjectControllerData.cLeague.CurrWeek].Add(-1);
+                    ProjectControllerData.cLeague.Teams[cLineupSave.IndexOf(team)].PlayerTotals[ProjectControllerData.cLeague.CurrWeek].Add(-1);
+                    ProjectControllerData.cLeague.Teams[cLineupSave.IndexOf(team)].PlayerTotals[ProjectControllerData.cLeague.CurrWeek].Add(-1);
+                    ProjectControllerData.cLeague.Teams[cLineupSave.IndexOf(team)].PlayerTotals[ProjectControllerData.cLeague.CurrWeek].Add(-1);
                 }
+
+                double total = 0;
+
+                for (var i = 0; i < 3; i++)
+                {
+                    var playerStatsList = WebScraper.GetPlayerStats(team[i*2].ID, ProjectControllerData.cLeague.CurrWeek);
+
+                    var playerTotal = ProjectControllerData.CalculatePointTotal(playerStatsList);
+                    if (playerTotal != -1)
+                    {
+                        total += playerTotal;
+                    }
+
+                    ProjectControllerData.cLeague.Teams[cLineupSave.IndexOf(team)].PlayerTotals[ProjectControllerData.cLeague.CurrWeek][i] = playerTotal;
+                }
+                ProjectControllerData.cLeague.Teams[cLineupSave.IndexOf(team)].PlayerTotals[ProjectControllerData.cLeague.CurrWeek][3] = total;
             }
         }
 
-        public double CalculatePointTotal(List<int> stats)
+        private void btnSave_Click(object sender, EventArgs e)
         {
-            double tot = 0;
+            SqlDataAccess.SaveCLeague();
+            ProjectControllerData.SaveSchedule();
+        }
 
-            //"pass_yds", "pass_td", "rush_att", "rush_yds", "rush_td", "rec", "rec_yds", "rec_td", "pass_cmp"
 
-            if (stats[0] != -1 && stats[0] != 0)
+        private void tabPage3_Enter(object sender, EventArgs e)
+        {
+
+        }
+
+        private void selWeek_Click(object sender, EventArgs e)
+        {
+            selWeek.Items.Clear();
+            for (var i = 1; i <= ProjectControllerData.cLeague.CurrWeek; i++)
             {
-                tot += stats[0] / Convert.ToDouble(txtPassYds.Text);
-                if (Convert.ToDouble(stats[0]) >= Convert.ToDouble(txtPassBonus.Text))
-                {
-                    tot += 5;
-                }
+                selWeek.Items.Add(i);
             }
-            if (stats[1] != -1 && stats[1] != 0)
+        }
+
+        private void selWeek_DropDownClosed(object sender, EventArgs e)
+        {
+            var index = ProjectControllerData.cLeague.CurrWeek;
+            if (selWeek.SelectedValue != null)
             {
-                tot += stats[1] * Convert.ToDouble(txtPassTds.Text);
+                index = Convert.ToInt32(selWeek.ValueMember);
+                ProjectControllerData.cWeek = Convert.ToInt32(selWeek.SelectedItem);
+
             }
-            if (stats[2] != -1 && stats[2] != 0)
+            playerMatchupsGrid2.Rows.Clear();
+            for (var i = 0; i < ProjectControllerData.cLeague.Schedule[index].Count; i++)
             {
-                tot += stats[2] * Convert.ToDouble(txtRushAtt.Text);
+                var team1Name = ProjectControllerData.cLeague.Schedule[index][i][0].ToString();
+                var team2Name = ProjectControllerData.cLeague.Schedule[index][i][1].ToString();
+
+                playerMatchupsGrid2.Rows.Add(team1Name, "", team2Name);
+                playerMatchupsGrid2.Rows[i].Height = 35;
             }
-            if (stats[3] != -1 && stats[3] != 0)
+
+            txtTb3Title.Text = $"Week {index} Infomation";
+
+        }
+
+        private void playerMatchupsGrid2_DoubleClick(object sender, EventArgs e)
+        {
+            var w = ProjectControllerData.cWeek;
+            var x = selWeek;
+            var teamMatchup = ProjectControllerData.cLeague.Schedule[w][playerMatchupsGrid2.Rows.IndexOf(playerMatchupsGrid2.SelectedRows[0])];
+
+            var team1 = ProjectControllerData.cLeague.Teams.Where(team => team.TeamName == teamMatchup[0]).ToList()[0];
+            var team2 = ProjectControllerData.cLeague.Teams.Where(team => team.TeamName == teamMatchup[1]).ToList()[0];
+
+            txtTeam1Name.Text = team1.TeamName;
+            txtTeam2Name.Text = team2.TeamName;
+
+            if (w == ProjectControllerData.cLeague.CurrWeek)
             {
-                tot += stats[3] / Convert.ToDouble(txtRushYds.Text);
-                if (Convert.ToDouble(stats[3]) >= Convert.ToDouble(txtRushBonus.Text))
-                {
-                    tot += 5;
-                }
+                txtQBName1.Text = team1.PlayerHistory[w][0].Name;
+                txtRBName1.Text = team1.PlayerHistory[w][2].Name;
+                txtWRName1.Text = team1.PlayerHistory[w][4].Name;
+
+                txtQBName2.Text = team2.PlayerHistory[w][0].Name;
+                txtRBName2.Text = team2.PlayerHistory[w][2].Name;
+                txtWRName2.Text = team2.PlayerHistory[w][4].Name;
             }
-            if (stats[4] != -1 && stats[4] != 0)
+            
+
+            var temp = team1.PlayerTotals;
+            try
             {
-                tot += stats[4] * Convert.ToDouble(txtRushTds.Text);
+                txtQBPoints1.Text = team1.PlayerTotals[w][0] == -1 ? "N/A" : team1.PlayerTotals[w][0].ToString();
+                txtRBPoints1.Text = team1.PlayerTotals[w][1] == -1 ? "N/A" : team1.PlayerTotals[w][0].ToString();
+                txtWRPoints1.Text = team1.PlayerTotals[w][2] == -1 ? "N/A" : team1.PlayerTotals[w][0].ToString();
+                txtTotPoints1.Text = team1.PlayerTotals[w][3] == -1 ? "N/A" : team1.PlayerTotals[w][3].ToString();
             }
-            if (stats[5] != -1 && stats[5] != 0)
+            catch
             {
-                tot += stats[5] * Convert.ToDouble(txtRec.Text);
+                txtQBPoints1.Text = "N/A";
+                txtRBPoints1.Text = "N/A";
+                txtWRPoints1.Text = "N/A";
+                txtTotPoints1.Text = "N/A";
             }
-            if (stats[6] != -1 && stats[6] != 0)
+
+            try
             {
-                tot += stats[6] / Convert.ToDouble(txtRecYds.Text);
-                if (Convert.ToDouble(stats[6]) >= Convert.ToDouble(txtRecBonus.Text))
-                {
-                    tot += 5;
-                }
+                txtQBPoints2.Text = team2.PlayerTotals[w][0] == -1 ? "N/A" : team2.PlayerTotals[w][0].ToString();
+                txtRBPoints2.Text = team2.PlayerTotals[w][1] == -1 ? "N/A" : team2.PlayerTotals[w][1].ToString();
+                txtWRPoints2.Text = team2.PlayerTotals[w][2] == -1 ? "N/A" : team2.PlayerTotals[w][2].ToString();
+                txtTotPoints2.Text = team2.PlayerTotals[w][3] == -1 ? "N/A" : team2.PlayerTotals[w][3].ToString();
+
             }
-            if (stats[7] != -1 && stats[7] != 0)
+            catch
             {
-                tot += stats[7] * Convert.ToDouble(txtRecTds.Text);
+                txtQBPoints2.Text = "N/A";
+                txtRBPoints2.Text = "N/A";
+                txtWRPoints2.Text = "N/A";
+                txtTotPoints2.Text = "N/A";
             }
-            if (stats[8] != -1 && stats[8] != 0)
-            {
-                tot += stats[8] * Convert.ToDouble(txtPassCmp.Text);
-            }
-            return Math.Round(tot, 2);
+
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            CalculatePointsForCWeek();
+
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            ProjectControllerData.cWeek = Convert.ToInt32(selWeek.SelectedItem);
+        }
+
+        private void btnNextWeek_Click(object sender, EventArgs e)
+        {
+            ProjectControllerData.cLeague.CurrWeek += 1;
         }
     }
 }

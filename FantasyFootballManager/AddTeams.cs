@@ -17,6 +17,8 @@ namespace FantasyFootballManager
         public bool _ctrl = false;
         public bool copied = false;
         public PlayerModel copy = null;
+        public static Dictionary<int, List<PlayerModel>> gridPlayerModel;
+
         public AddTeams()
         {
             InitializeComponent();
@@ -42,25 +44,17 @@ namespace FantasyFootballManager
 
             FillGrid();
 
-            ProjectControllerData.cTeam = 0;
+
             gbMain.Text = $"Team {ProjectControllerData.cTeam + 1} Infomation";
         }
 
         public void FillEmptyGrid()
         {
             playerHistoryGrid.Rows.Clear();
-            if (ProjectControllerData.cLeague.StartWeek == 1)
+            for (var i = 0; i < ProjectControllerData.cLeague.CurrWeek; i++)
             {
-                playerHistoryGrid.Rows.Add("1");
-                playerHistoryGrid.Rows[0].Height = 35;
-            }
-            else
-            {
-                for (var i = 0; i <= ProjectControllerData.cLeague.StartWeek; i++)
-                {
-                    playerHistoryGrid.Rows.Add($"{i}");
-                    playerHistoryGrid.Rows[i].Height = 35;
-                }
+                playerHistoryGrid.Rows.Add($"{i+1}");
+                playerHistoryGrid.Rows[i].Height = 35;
             }
         }
 
@@ -68,12 +62,11 @@ namespace FantasyFootballManager
         {
             FillEmptyGrid();
 
-            if (ProjectControllerData.cLeague.Teams.Count == 0)
+            if (ProjectControllerData.cWeek == 0 || ProjectControllerData.cLeague.Teams.Count <= ProjectControllerData.cTeam)
             {
                 return;
             }
-            var weekData = new List<string>();
-            var temp = playerHistoryGrid;
+
             foreach (var week in ProjectControllerData.cLeague.Teams[ProjectControllerData.cTeam].PlayerHistory)
             {
                 foreach (var pos in week.Value)
@@ -117,8 +110,7 @@ namespace FantasyFootballManager
             if (ProjectControllerData.cLeague.Teams.Count < ProjectControllerData.cTeam+1)
             {
                 ProjectControllerData.cLeague.Teams.Add(new TeamModel(txtTeamName.Text));
-                foreach (var player in ProjectControllerData.)
-                ProjectControllerData.cLeague.Teams[ProjectControllerData.cTeam].PlayerHistory.Add()
+                
             } 
             else
             {
@@ -129,6 +121,14 @@ namespace FantasyFootballManager
             gbMain.Text = $"Team {ProjectControllerData.cTeam + 1} Infomation";
             txtTeamName.Text = "";
             txtTeamName.Focus();
+
+            for (var row = 0; row < ProjectControllerData.cLeague.CurrWeek; row++)
+            {
+                for (var col = 1; col <= 6; col++)
+                {
+                    var cCell = playerHistoryGrid.Rows[row].Cells[col].Value = "";
+                }
+            }
 
 
             if (ProjectControllerData.cLeague.NumOfTeams == ProjectControllerData.cTeam)
@@ -155,6 +155,7 @@ namespace FantasyFootballManager
 
         private void playerHistoryGrid_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
+
             if (e.ColumnIndex == 0)
             {
                 return;
@@ -220,7 +221,12 @@ namespace FantasyFootballManager
                 {
                     var rowIndex = playerHistoryGrid.SelectedCells[0].RowIndex;
                     var colIndex = playerHistoryGrid.SelectedCells[0].ColumnIndex;
-                    var temp = ProjectControllerData.cLeague.Teams[ProjectControllerData.cTeam].PlayerHistory;
+
+                    if (!ProjectControllerData.cLeague.Teams[ProjectControllerData.cTeam].PlayerHistory.ContainsKey(rowIndex+1))
+                    {
+                        ProjectControllerData.cLeague.Teams[ProjectControllerData.cTeam].PlayerHistory.Add(rowIndex+1, new Dictionary<int, PlayerModel>());
+                    }
+
                     var toBeCopied = ProjectControllerData.cLeague.Teams[ProjectControllerData.cTeam].PlayerHistory[rowIndex+1][colIndex - 1];
                     
                     copy = (PlayerModel)toBeCopied.Clone();
@@ -237,9 +243,13 @@ namespace FantasyFootballManager
                     var rowIndex = playerHistoryGrid.SelectedCells[0].RowIndex;
                     var colIndex = playerHistoryGrid.SelectedCells[0].ColumnIndex;
                     
-                    var temp = ProjectControllerData.cLeague.Teams[ProjectControllerData.cTeam].PlayerHistory;
                     if (copied)
                     {
+                        if (!ProjectControllerData.cLeague.Teams[ProjectControllerData.cTeam].PlayerHistory.ContainsKey(rowIndex + 1))
+                        {
+                            ProjectControllerData.cLeague.Teams[ProjectControllerData.cTeam].PlayerHistory.Add(rowIndex+1, new Dictionary<int, PlayerModel>());
+                        }
+
                         if (ProjectControllerData.cLeague.Teams[ProjectControllerData.cTeam].PlayerHistory[rowIndex+1].ContainsKey(colIndex-1))
                         {
                             ProjectControllerData.cLeague.Teams[ProjectControllerData.cTeam].PlayerHistory[rowIndex+1][colIndex - 1] = copy;

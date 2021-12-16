@@ -29,11 +29,13 @@ namespace FantasyFootballManager
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle13 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle14 = new System.Windows.Forms.DataGridViewCellStyle();
             this.label1 = new System.Windows.Forms.Label();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
@@ -64,6 +66,7 @@ namespace FantasyFootballManager
             this.sQB = new System.Windows.Forms.DataGridViewComboBoxColumn();
             this.sRB = new System.Windows.Forms.DataGridViewComboBoxColumn();
             this.sWR = new System.Windows.Forms.DataGridViewComboBoxColumn();
+            this.totPoints = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.label9 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.label12 = new System.Windows.Forms.Label();
@@ -73,37 +76,41 @@ namespace FantasyFootballManager
             this.opponentTwo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tabPage3 = new System.Windows.Forms.TabPage();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
-            this.label21 = new System.Windows.Forms.Label();
-            this.label22 = new System.Windows.Forms.Label();
-            this.label23 = new System.Windows.Forms.Label();
-            this.label24 = new System.Windows.Forms.Label();
-            this.textBox7 = new System.Windows.Forms.TextBox();
-            this.textBox8 = new System.Windows.Forms.TextBox();
-            this.textBox9 = new System.Windows.Forms.TextBox();
+            this.txtTotPoints2 = new System.Windows.Forms.Label();
+            this.txtWRPoints2 = new System.Windows.Forms.Label();
+            this.txtRBPoints2 = new System.Windows.Forms.Label();
+            this.txtQBPoints2 = new System.Windows.Forms.Label();
+            this.txtWRName2 = new System.Windows.Forms.TextBox();
+            this.txtRBName2 = new System.Windows.Forms.TextBox();
+            this.txtQBName2 = new System.Windows.Forms.TextBox();
             this.label25 = new System.Windows.Forms.Label();
             this.label26 = new System.Windows.Forms.Label();
             this.label27 = new System.Windows.Forms.Label();
             this.label28 = new System.Windows.Forms.Label();
             this.label29 = new System.Windows.Forms.Label();
-            this.label30 = new System.Windows.Forms.Label();
-            this.label20 = new System.Windows.Forms.Label();
-            this.label19 = new System.Windows.Forms.Label();
-            this.label18 = new System.Windows.Forms.Label();
-            this.label17 = new System.Windows.Forms.Label();
-            this.textBox6 = new System.Windows.Forms.TextBox();
-            this.textBox5 = new System.Windows.Forms.TextBox();
-            this.textBox4 = new System.Windows.Forms.TextBox();
+            this.txtTeam2Name = new System.Windows.Forms.Label();
+            this.txtTotPoints1 = new System.Windows.Forms.Label();
+            this.txtWRPoints1 = new System.Windows.Forms.Label();
+            this.txtRBPoints1 = new System.Windows.Forms.Label();
+            this.txtQBPoints1 = new System.Windows.Forms.Label();
+            this.txtWRName1 = new System.Windows.Forms.TextBox();
+            this.txtRBName1 = new System.Windows.Forms.TextBox();
+            this.txtQBName1 = new System.Windows.Forms.TextBox();
             this.label16 = new System.Windows.Forms.Label();
             this.label15 = new System.Windows.Forms.Label();
             this.label14 = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
-            this.label8 = new System.Windows.Forms.Label();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.txtTeam1Name = new System.Windows.Forms.Label();
+            this.selWeek = new System.Windows.Forms.ComboBox();
             this.label7 = new System.Windows.Forms.Label();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
-            this.listBox2 = new System.Windows.Forms.ListBox();
-            this.label13 = new System.Windows.Forms.Label();
+            this.label36 = new System.Windows.Forms.Label();
+            this.playerMatchupsGrid2 = new System.Windows.Forms.DataGridView();
+            this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.txtTb3Title = new System.Windows.Forms.Label();
             this.tabPage4 = new System.Windows.Forms.TabPage();
             this.groupBox6 = new System.Windows.Forms.GroupBox();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
@@ -157,6 +164,7 @@ namespace FantasyFootballManager
             this.button6 = new System.Windows.Forms.Button();
             this.button5 = new System.Windows.Forms.Button();
             this.label35 = new System.Windows.Forms.Label();
+            this.button4 = new System.Windows.Forms.Button();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -169,6 +177,7 @@ namespace FantasyFootballManager
             this.tabPage3.SuspendLayout();
             this.groupBox5.SuspendLayout();
             this.groupBox4.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.playerMatchupsGrid2)).BeginInit();
             this.tabPage4.SuspendLayout();
             this.groupBox6.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
@@ -304,6 +313,7 @@ namespace FantasyFootballManager
             this.button2.TabIndex = 8;
             this.button2.Text = "Update Scores to Current Week";
             this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // button1
             // 
@@ -340,26 +350,26 @@ namespace FantasyFootballManager
             this.teamsGridView.AllowUserToAddRows = false;
             this.teamsGridView.AllowUserToDeleteRows = false;
             this.teamsGridView.AllowUserToResizeColumns = false;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Rockwell", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.teamsGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle8.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle8.Font = new System.Drawing.Font("Rockwell", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle8.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle8.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.teamsGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle8;
             this.teamsGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.teamsGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.teamName2,
             this.record});
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Rockwell", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.teamsGridView.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle9.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle9.Font = new System.Drawing.Font("Rockwell", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle9.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle9.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle9.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle9.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.teamsGridView.DefaultCellStyle = dataGridViewCellStyle9;
             this.teamsGridView.Location = new System.Drawing.Point(6, 25);
             this.teamsGridView.Name = "teamsGridView";
             this.teamsGridView.RowHeadersVisible = false;
@@ -416,6 +426,7 @@ namespace FantasyFootballManager
             this.btnSave.TabIndex = 27;
             this.btnSave.Text = "Save Totals";
             this.btnSave.UseVisualStyleBackColor = true;
+            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
             // 
             // btnNextWeek
             // 
@@ -426,6 +437,7 @@ namespace FantasyFootballManager
             this.btnNextWeek.TabIndex = 26;
             this.btnNextWeek.Text = "Advance Week";
             this.btnNextWeek.UseVisualStyleBackColor = true;
+            this.btnNextWeek.Click += new System.EventHandler(this.btnNextWeek_Click);
             // 
             // label6
             // 
@@ -473,20 +485,29 @@ namespace FantasyFootballManager
             this.lineupsGrid.AllowUserToAddRows = false;
             this.lineupsGrid.AllowUserToDeleteRows = false;
             this.lineupsGrid.AllowUserToResizeColumns = false;
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Rockwell", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.lineupsGrid.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle10.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle10.Font = new System.Drawing.Font("Rockwell", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle10.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle10.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle10.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle10.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.lineupsGrid.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle10;
             this.lineupsGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.lineupsGrid.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.teamName,
             this.sQB,
             this.sRB,
-            this.sWR});
+            this.sWR,
+            this.totPoints});
+            dataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle11.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle11.Font = new System.Drawing.Font("Rockwell", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle11.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle11.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle11.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle11.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.lineupsGrid.DefaultCellStyle = dataGridViewCellStyle11;
             this.lineupsGrid.Location = new System.Drawing.Point(6, 25);
             this.lineupsGrid.Name = "lineupsGrid";
             this.lineupsGrid.RowHeadersVisible = false;
@@ -527,6 +548,11 @@ namespace FantasyFootballManager
             this.sWR.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             this.sWR.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
             // 
+            // totPoints
+            // 
+            this.totPoints.HeaderText = "Total Points";
+            this.totPoints.Name = "totPoints";
+            // 
             // label9
             // 
             this.label9.AutoSize = true;
@@ -562,14 +588,14 @@ namespace FantasyFootballManager
             // 
             this.playerMatchupGrid.AllowUserToAddRows = false;
             this.playerMatchupGrid.AllowUserToDeleteRows = false;
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("Rockwell", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.playerMatchupGrid.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle12.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle12.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle12.Font = new System.Drawing.Font("Rockwell", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle12.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle12.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle12.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle12.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.playerMatchupGrid.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle12;
             this.playerMatchupGrid.ColumnHeadersHeight = 60;
             this.playerMatchupGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             this.playerMatchupGrid.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
@@ -610,11 +636,12 @@ namespace FantasyFootballManager
             // 
             // tabPage3
             // 
+            this.tabPage3.Controls.Add(this.button4);
             this.tabPage3.Controls.Add(this.groupBox5);
-            this.tabPage3.Controls.Add(this.comboBox1);
+            this.tabPage3.Controls.Add(this.selWeek);
             this.tabPage3.Controls.Add(this.label7);
             this.tabPage3.Controls.Add(this.groupBox4);
-            this.tabPage3.Controls.Add(this.label13);
+            this.tabPage3.Controls.Add(this.txtTb3Title);
             this.tabPage3.Location = new System.Drawing.Point(4, 28);
             this.tabPage3.Name = "tabPage3";
             this.tabPage3.Padding = new System.Windows.Forms.Padding(3);
@@ -622,35 +649,36 @@ namespace FantasyFootballManager
             this.tabPage3.TabIndex = 2;
             this.tabPage3.Text = "View Scores";
             this.tabPage3.UseVisualStyleBackColor = true;
+            this.tabPage3.Enter += new System.EventHandler(this.tabPage3_Enter);
             // 
             // groupBox5
             // 
-            this.groupBox5.Controls.Add(this.label21);
-            this.groupBox5.Controls.Add(this.label22);
-            this.groupBox5.Controls.Add(this.label23);
-            this.groupBox5.Controls.Add(this.label24);
-            this.groupBox5.Controls.Add(this.textBox7);
-            this.groupBox5.Controls.Add(this.textBox8);
-            this.groupBox5.Controls.Add(this.textBox9);
+            this.groupBox5.Controls.Add(this.txtTotPoints2);
+            this.groupBox5.Controls.Add(this.txtWRPoints2);
+            this.groupBox5.Controls.Add(this.txtRBPoints2);
+            this.groupBox5.Controls.Add(this.txtQBPoints2);
+            this.groupBox5.Controls.Add(this.txtWRName2);
+            this.groupBox5.Controls.Add(this.txtRBName2);
+            this.groupBox5.Controls.Add(this.txtQBName2);
             this.groupBox5.Controls.Add(this.label25);
             this.groupBox5.Controls.Add(this.label26);
             this.groupBox5.Controls.Add(this.label27);
             this.groupBox5.Controls.Add(this.label28);
             this.groupBox5.Controls.Add(this.label29);
-            this.groupBox5.Controls.Add(this.label30);
-            this.groupBox5.Controls.Add(this.label20);
-            this.groupBox5.Controls.Add(this.label19);
-            this.groupBox5.Controls.Add(this.label18);
-            this.groupBox5.Controls.Add(this.label17);
-            this.groupBox5.Controls.Add(this.textBox6);
-            this.groupBox5.Controls.Add(this.textBox5);
-            this.groupBox5.Controls.Add(this.textBox4);
+            this.groupBox5.Controls.Add(this.txtTeam2Name);
+            this.groupBox5.Controls.Add(this.txtTotPoints1);
+            this.groupBox5.Controls.Add(this.txtWRPoints1);
+            this.groupBox5.Controls.Add(this.txtRBPoints1);
+            this.groupBox5.Controls.Add(this.txtQBPoints1);
+            this.groupBox5.Controls.Add(this.txtWRName1);
+            this.groupBox5.Controls.Add(this.txtRBName1);
+            this.groupBox5.Controls.Add(this.txtQBName1);
             this.groupBox5.Controls.Add(this.label16);
             this.groupBox5.Controls.Add(this.label15);
             this.groupBox5.Controls.Add(this.label14);
             this.groupBox5.Controls.Add(this.label11);
             this.groupBox5.Controls.Add(this.label10);
-            this.groupBox5.Controls.Add(this.label8);
+            this.groupBox5.Controls.Add(this.txtTeam1Name);
             this.groupBox5.Location = new System.Drawing.Point(265, 90);
             this.groupBox5.Name = "groupBox5";
             this.groupBox5.Size = new System.Drawing.Size(569, 339);
@@ -658,69 +686,69 @@ namespace FantasyFootballManager
             this.groupBox5.TabStop = false;
             this.groupBox5.Text = "Point Totals";
             // 
-            // label21
+            // txtTotPoints2
             // 
-            this.label21.AutoSize = true;
-            this.label21.Font = new System.Drawing.Font("Rockwell", 18F, System.Drawing.FontStyle.Bold);
-            this.label21.Location = new System.Drawing.Point(485, 261);
-            this.label21.Name = "label21";
-            this.label21.Size = new System.Drawing.Size(81, 29);
-            this.label21.TabIndex = 30;
-            this.label21.Text = "100 pt";
+            this.txtTotPoints2.AutoSize = true;
+            this.txtTotPoints2.Font = new System.Drawing.Font("Rockwell", 18F, System.Drawing.FontStyle.Bold);
+            this.txtTotPoints2.Location = new System.Drawing.Point(485, 261);
+            this.txtTotPoints2.Name = "txtTotPoints2";
+            this.txtTotPoints2.Size = new System.Drawing.Size(81, 29);
+            this.txtTotPoints2.TabIndex = 30;
+            this.txtTotPoints2.Text = "100 pt";
             // 
-            // label22
+            // txtWRPoints2
             // 
-            this.label22.AutoSize = true;
-            this.label22.Font = new System.Drawing.Font("Rockwell", 14F);
-            this.label22.Location = new System.Drawing.Point(502, 213);
-            this.label22.Name = "label22";
-            this.label22.Size = new System.Drawing.Size(43, 21);
-            this.label22.TabIndex = 29;
-            this.label22.Text = "0 pt";
+            this.txtWRPoints2.AutoSize = true;
+            this.txtWRPoints2.Font = new System.Drawing.Font("Rockwell", 14F);
+            this.txtWRPoints2.Location = new System.Drawing.Point(502, 213);
+            this.txtWRPoints2.Name = "txtWRPoints2";
+            this.txtWRPoints2.Size = new System.Drawing.Size(43, 21);
+            this.txtWRPoints2.TabIndex = 29;
+            this.txtWRPoints2.Text = "0 pt";
             // 
-            // label23
+            // txtRBPoints2
             // 
-            this.label23.AutoSize = true;
-            this.label23.Font = new System.Drawing.Font("Rockwell", 14F);
-            this.label23.Location = new System.Drawing.Point(502, 148);
-            this.label23.Name = "label23";
-            this.label23.Size = new System.Drawing.Size(43, 21);
-            this.label23.TabIndex = 28;
-            this.label23.Text = "0 pt";
+            this.txtRBPoints2.AutoSize = true;
+            this.txtRBPoints2.Font = new System.Drawing.Font("Rockwell", 14F);
+            this.txtRBPoints2.Location = new System.Drawing.Point(502, 148);
+            this.txtRBPoints2.Name = "txtRBPoints2";
+            this.txtRBPoints2.Size = new System.Drawing.Size(43, 21);
+            this.txtRBPoints2.TabIndex = 28;
+            this.txtRBPoints2.Text = "0 pt";
             // 
-            // label24
+            // txtQBPoints2
             // 
-            this.label24.AutoSize = true;
-            this.label24.Font = new System.Drawing.Font("Rockwell", 14F);
-            this.label24.Location = new System.Drawing.Point(502, 88);
-            this.label24.Name = "label24";
-            this.label24.Size = new System.Drawing.Size(43, 21);
-            this.label24.TabIndex = 27;
-            this.label24.Text = "0 pt";
+            this.txtQBPoints2.AutoSize = true;
+            this.txtQBPoints2.Font = new System.Drawing.Font("Rockwell", 14F);
+            this.txtQBPoints2.Location = new System.Drawing.Point(502, 88);
+            this.txtQBPoints2.Name = "txtQBPoints2";
+            this.txtQBPoints2.Size = new System.Drawing.Size(43, 21);
+            this.txtQBPoints2.TabIndex = 27;
+            this.txtQBPoints2.Text = "0 pt";
             // 
-            // textBox7
+            // txtWRName2
             // 
-            this.textBox7.Location = new System.Drawing.Point(334, 208);
-            this.textBox7.Name = "textBox7";
-            this.textBox7.ReadOnly = true;
-            this.textBox7.Size = new System.Drawing.Size(132, 26);
-            this.textBox7.TabIndex = 26;
+            this.txtWRName2.Location = new System.Drawing.Point(334, 208);
+            this.txtWRName2.Name = "txtWRName2";
+            this.txtWRName2.ReadOnly = true;
+            this.txtWRName2.Size = new System.Drawing.Size(132, 26);
+            this.txtWRName2.TabIndex = 26;
             // 
-            // textBox8
+            // txtRBName2
             // 
-            this.textBox8.Location = new System.Drawing.Point(334, 147);
-            this.textBox8.Name = "textBox8";
-            this.textBox8.ReadOnly = true;
-            this.textBox8.Size = new System.Drawing.Size(132, 26);
-            this.textBox8.TabIndex = 25;
+            this.txtRBName2.Location = new System.Drawing.Point(334, 147);
+            this.txtRBName2.Name = "txtRBName2";
+            this.txtRBName2.ReadOnly = true;
+            this.txtRBName2.Size = new System.Drawing.Size(132, 26);
+            this.txtRBName2.TabIndex = 25;
             // 
-            // textBox9
+            // txtQBName2
             // 
-            this.textBox9.Location = new System.Drawing.Point(334, 88);
-            this.textBox9.Name = "textBox9";
-            this.textBox9.ReadOnly = true;
-            this.textBox9.Size = new System.Drawing.Size(132, 26);
-            this.textBox9.TabIndex = 24;
+            this.txtQBName2.Location = new System.Drawing.Point(334, 88);
+            this.txtQBName2.Name = "txtQBName2";
+            this.txtQBName2.ReadOnly = true;
+            this.txtQBName2.Size = new System.Drawing.Size(132, 26);
+            this.txtQBName2.TabIndex = 24;
             // 
             // label25
             // 
@@ -772,79 +800,79 @@ namespace FantasyFootballManager
             this.label29.TabIndex = 19;
             this.label29.Text = "Points";
             // 
-            // label30
+            // txtTeam2Name
             // 
-            this.label30.AutoSize = true;
-            this.label30.Font = new System.Drawing.Font("Rockwell", 18F, System.Drawing.FontStyle.Bold);
-            this.label30.Location = new System.Drawing.Point(353, 35);
-            this.label30.Name = "label30";
-            this.label30.Size = new System.Drawing.Size(100, 29);
-            this.label30.TabIndex = 18;
-            this.label30.Text = "Team 1";
+            this.txtTeam2Name.AutoSize = true;
+            this.txtTeam2Name.Font = new System.Drawing.Font("Rockwell", 18F, System.Drawing.FontStyle.Bold);
+            this.txtTeam2Name.Location = new System.Drawing.Point(353, 35);
+            this.txtTeam2Name.Name = "txtTeam2Name";
+            this.txtTeam2Name.Size = new System.Drawing.Size(100, 29);
+            this.txtTeam2Name.TabIndex = 18;
+            this.txtTeam2Name.Text = "Team 1";
             // 
-            // label20
+            // txtTotPoints1
             // 
-            this.label20.AutoSize = true;
-            this.label20.Font = new System.Drawing.Font("Rockwell", 18F, System.Drawing.FontStyle.Bold);
-            this.label20.Location = new System.Drawing.Point(199, 261);
-            this.label20.Name = "label20";
-            this.label20.Size = new System.Drawing.Size(81, 29);
-            this.label20.TabIndex = 17;
-            this.label20.Text = "100 pt";
+            this.txtTotPoints1.AutoSize = true;
+            this.txtTotPoints1.Font = new System.Drawing.Font("Rockwell", 18F, System.Drawing.FontStyle.Bold);
+            this.txtTotPoints1.Location = new System.Drawing.Point(199, 261);
+            this.txtTotPoints1.Name = "txtTotPoints1";
+            this.txtTotPoints1.Size = new System.Drawing.Size(81, 29);
+            this.txtTotPoints1.TabIndex = 17;
+            this.txtTotPoints1.Text = "100 pt";
             // 
-            // label19
+            // txtWRPoints1
             // 
-            this.label19.AutoSize = true;
-            this.label19.Font = new System.Drawing.Font("Rockwell", 14F);
-            this.label19.Location = new System.Drawing.Point(216, 213);
-            this.label19.Name = "label19";
-            this.label19.Size = new System.Drawing.Size(43, 21);
-            this.label19.TabIndex = 16;
-            this.label19.Text = "0 pt";
+            this.txtWRPoints1.AutoSize = true;
+            this.txtWRPoints1.Font = new System.Drawing.Font("Rockwell", 14F);
+            this.txtWRPoints1.Location = new System.Drawing.Point(216, 213);
+            this.txtWRPoints1.Name = "txtWRPoints1";
+            this.txtWRPoints1.Size = new System.Drawing.Size(43, 21);
+            this.txtWRPoints1.TabIndex = 16;
+            this.txtWRPoints1.Text = "0 pt";
             // 
-            // label18
+            // txtRBPoints1
             // 
-            this.label18.AutoSize = true;
-            this.label18.Font = new System.Drawing.Font("Rockwell", 14F);
-            this.label18.Location = new System.Drawing.Point(216, 148);
-            this.label18.Name = "label18";
-            this.label18.Size = new System.Drawing.Size(43, 21);
-            this.label18.TabIndex = 15;
-            this.label18.Text = "0 pt";
+            this.txtRBPoints1.AutoSize = true;
+            this.txtRBPoints1.Font = new System.Drawing.Font("Rockwell", 14F);
+            this.txtRBPoints1.Location = new System.Drawing.Point(216, 148);
+            this.txtRBPoints1.Name = "txtRBPoints1";
+            this.txtRBPoints1.Size = new System.Drawing.Size(43, 21);
+            this.txtRBPoints1.TabIndex = 15;
+            this.txtRBPoints1.Text = "0 pt";
             // 
-            // label17
+            // txtQBPoints1
             // 
-            this.label17.AutoSize = true;
-            this.label17.Font = new System.Drawing.Font("Rockwell", 14F);
-            this.label17.Location = new System.Drawing.Point(216, 88);
-            this.label17.Name = "label17";
-            this.label17.Size = new System.Drawing.Size(43, 21);
-            this.label17.TabIndex = 14;
-            this.label17.Text = "0 pt";
+            this.txtQBPoints1.AutoSize = true;
+            this.txtQBPoints1.Font = new System.Drawing.Font("Rockwell", 14F);
+            this.txtQBPoints1.Location = new System.Drawing.Point(216, 88);
+            this.txtQBPoints1.Name = "txtQBPoints1";
+            this.txtQBPoints1.Size = new System.Drawing.Size(43, 21);
+            this.txtQBPoints1.TabIndex = 14;
+            this.txtQBPoints1.Text = "0 pt";
             // 
-            // textBox6
+            // txtWRName1
             // 
-            this.textBox6.Location = new System.Drawing.Point(48, 208);
-            this.textBox6.Name = "textBox6";
-            this.textBox6.ReadOnly = true;
-            this.textBox6.Size = new System.Drawing.Size(132, 26);
-            this.textBox6.TabIndex = 13;
+            this.txtWRName1.Location = new System.Drawing.Point(48, 208);
+            this.txtWRName1.Name = "txtWRName1";
+            this.txtWRName1.ReadOnly = true;
+            this.txtWRName1.Size = new System.Drawing.Size(132, 26);
+            this.txtWRName1.TabIndex = 13;
             // 
-            // textBox5
+            // txtRBName1
             // 
-            this.textBox5.Location = new System.Drawing.Point(48, 147);
-            this.textBox5.Name = "textBox5";
-            this.textBox5.ReadOnly = true;
-            this.textBox5.Size = new System.Drawing.Size(132, 26);
-            this.textBox5.TabIndex = 12;
+            this.txtRBName1.Location = new System.Drawing.Point(48, 147);
+            this.txtRBName1.Name = "txtRBName1";
+            this.txtRBName1.ReadOnly = true;
+            this.txtRBName1.Size = new System.Drawing.Size(132, 26);
+            this.txtRBName1.TabIndex = 12;
             // 
-            // textBox4
+            // txtQBName1
             // 
-            this.textBox4.Location = new System.Drawing.Point(48, 88);
-            this.textBox4.Name = "textBox4";
-            this.textBox4.ReadOnly = true;
-            this.textBox4.Size = new System.Drawing.Size(132, 26);
-            this.textBox4.TabIndex = 11;
+            this.txtQBName1.Location = new System.Drawing.Point(48, 88);
+            this.txtQBName1.Name = "txtQBName1";
+            this.txtQBName1.ReadOnly = true;
+            this.txtQBName1.Size = new System.Drawing.Size(132, 26);
+            this.txtQBName1.TabIndex = 11;
             // 
             // label16
             // 
@@ -896,24 +924,26 @@ namespace FantasyFootballManager
             this.label10.TabIndex = 6;
             this.label10.Text = "Points";
             // 
-            // label8
+            // txtTeam1Name
             // 
-            this.label8.AutoSize = true;
-            this.label8.Font = new System.Drawing.Font("Rockwell", 18F, System.Drawing.FontStyle.Bold);
-            this.label8.Location = new System.Drawing.Point(67, 35);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(100, 29);
-            this.label8.TabIndex = 5;
-            this.label8.Text = "Team 1";
+            this.txtTeam1Name.AutoSize = true;
+            this.txtTeam1Name.Font = new System.Drawing.Font("Rockwell", 18F, System.Drawing.FontStyle.Bold);
+            this.txtTeam1Name.Location = new System.Drawing.Point(67, 35);
+            this.txtTeam1Name.Name = "txtTeam1Name";
+            this.txtTeam1Name.Size = new System.Drawing.Size(100, 29);
+            this.txtTeam1Name.TabIndex = 5;
+            this.txtTeam1Name.Text = "Team 1";
             // 
-            // comboBox1
+            // selWeek
             // 
-            this.comboBox1.Font = new System.Drawing.Font("Rockwell", 16F);
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(413, 51);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(179, 31);
-            this.comboBox1.TabIndex = 4;
+            this.selWeek.Font = new System.Drawing.Font("Rockwell", 16F);
+            this.selWeek.FormattingEnabled = true;
+            this.selWeek.Location = new System.Drawing.Point(413, 51);
+            this.selWeek.Name = "selWeek";
+            this.selWeek.Size = new System.Drawing.Size(179, 31);
+            this.selWeek.TabIndex = 4;
+            this.selWeek.DropDownClosed += new System.EventHandler(this.selWeek_DropDownClosed);
+            this.selWeek.Click += new System.EventHandler(this.selWeek_Click);
             // 
             // label7
             // 
@@ -927,7 +957,8 @@ namespace FantasyFootballManager
             // 
             // groupBox4
             // 
-            this.groupBox4.Controls.Add(this.listBox2);
+            this.groupBox4.Controls.Add(this.label36);
+            this.groupBox4.Controls.Add(this.playerMatchupsGrid2);
             this.groupBox4.Location = new System.Drawing.Point(20, 90);
             this.groupBox4.Name = "groupBox4";
             this.groupBox4.Size = new System.Drawing.Size(239, 339);
@@ -935,24 +966,78 @@ namespace FantasyFootballManager
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "Matchups";
             // 
-            // listBox2
+            // label36
             // 
-            this.listBox2.FormattingEnabled = true;
-            this.listBox2.ItemHeight = 19;
-            this.listBox2.Location = new System.Drawing.Point(6, 25);
-            this.listBox2.Name = "listBox2";
-            this.listBox2.Size = new System.Drawing.Size(227, 308);
-            this.listBox2.TabIndex = 1;
+            this.label36.AutoSize = true;
+            this.label36.Location = new System.Drawing.Point(107, 45);
+            this.label36.Name = "label36";
+            this.label36.Size = new System.Drawing.Size(25, 19);
+            this.label36.TabIndex = 26;
+            this.label36.Text = "vs";
             // 
-            // label13
+            // playerMatchupsGrid2
             // 
-            this.label13.AutoSize = true;
-            this.label13.Font = new System.Drawing.Font("Rockwell", 18F, System.Drawing.FontStyle.Bold);
-            this.label13.Location = new System.Drawing.Point(307, 13);
-            this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(238, 29);
-            this.label13.TabIndex = 2;
-            this.label13.Text = "Week # Infomation";
+            this.playerMatchupsGrid2.AllowUserToAddRows = false;
+            this.playerMatchupsGrid2.AllowUserToDeleteRows = false;
+            this.playerMatchupsGrid2.AllowUserToResizeColumns = false;
+            this.playerMatchupsGrid2.AllowUserToResizeRows = false;
+            dataGridViewCellStyle13.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle13.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle13.Font = new System.Drawing.Font("Rockwell", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle13.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle13.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle13.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle13.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.playerMatchupsGrid2.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle13;
+            this.playerMatchupsGrid2.ColumnHeadersHeight = 60;
+            this.playerMatchupsGrid2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
+            this.playerMatchupsGrid2.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dataGridViewTextBoxColumn4,
+            this.dataGridViewTextBoxColumn5,
+            this.dataGridViewTextBoxColumn6});
+            this.playerMatchupsGrid2.Location = new System.Drawing.Point(6, 22);
+            this.playerMatchupsGrid2.Name = "playerMatchupsGrid2";
+            this.playerMatchupsGrid2.RowHeadersVisible = false;
+            this.playerMatchupsGrid2.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
+            this.playerMatchupsGrid2.RowTemplate.Height = 24;
+            this.playerMatchupsGrid2.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            this.playerMatchupsGrid2.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.playerMatchupsGrid2.Size = new System.Drawing.Size(227, 311);
+            this.playerMatchupsGrid2.TabIndex = 25;
+            this.playerMatchupsGrid2.DoubleClick += new System.EventHandler(this.playerMatchupsGrid2_DoubleClick);
+            // 
+            // dataGridViewTextBoxColumn4
+            // 
+            this.dataGridViewTextBoxColumn4.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.dataGridViewTextBoxColumn4.HeaderText = "Opponent One";
+            this.dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
+            this.dataGridViewTextBoxColumn4.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridViewTextBoxColumn4.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            // 
+            // dataGridViewTextBoxColumn5
+            // 
+            this.dataGridViewTextBoxColumn5.HeaderText = "";
+            this.dataGridViewTextBoxColumn5.Name = "dataGridViewTextBoxColumn5";
+            this.dataGridViewTextBoxColumn5.ReadOnly = true;
+            this.dataGridViewTextBoxColumn5.Width = 51;
+            // 
+            // dataGridViewTextBoxColumn6
+            // 
+            this.dataGridViewTextBoxColumn6.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.dataGridViewTextBoxColumn6.HeaderText = "Opponent Two";
+            this.dataGridViewTextBoxColumn6.Name = "dataGridViewTextBoxColumn6";
+            this.dataGridViewTextBoxColumn6.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridViewTextBoxColumn6.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            // 
+            // txtTb3Title
+            // 
+            this.txtTb3Title.AutoSize = true;
+            this.txtTb3Title.Font = new System.Drawing.Font("Rockwell", 18F, System.Drawing.FontStyle.Bold);
+            this.txtTb3Title.Location = new System.Drawing.Point(307, 13);
+            this.txtTb3Title.Name = "txtTb3Title";
+            this.txtTb3Title.Size = new System.Drawing.Size(238, 29);
+            this.txtTb3Title.TabIndex = 2;
+            this.txtTb3Title.Text = "Week # Infomation";
             // 
             // tabPage4
             // 
@@ -1026,14 +1111,14 @@ namespace FantasyFootballManager
             // 
             // playerHistoryGrid
             // 
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle5.Font = new System.Drawing.Font("Rockwell", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.playerHistoryGrid.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle14.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle14.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle14.Font = new System.Drawing.Font("Rockwell", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle14.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle14.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle14.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle14.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.playerHistoryGrid.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle14;
             this.playerHistoryGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.playerHistoryGrid.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.teamNames,
@@ -1484,6 +1569,16 @@ namespace FantasyFootballManager
             this.label35.TabIndex = 8;
             this.label35.Text = "Export Data";
             // 
+            // button4
+            // 
+            this.button4.Location = new System.Drawing.Point(622, 47);
+            this.button4.Name = "button4";
+            this.button4.Size = new System.Drawing.Size(118, 41);
+            this.button4.TabIndex = 5;
+            this.button4.Text = "Enter";
+            this.button4.UseVisualStyleBackColor = true;
+            this.button4.Click += new System.EventHandler(this.button4_Click);
+            // 
             // LeagueManagment
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 19F);
@@ -1513,6 +1608,8 @@ namespace FantasyFootballManager
             this.groupBox5.ResumeLayout(false);
             this.groupBox5.PerformLayout();
             this.groupBox4.ResumeLayout(false);
+            this.groupBox4.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.playerMatchupsGrid2)).EndInit();
             this.tabPage4.ResumeLayout(false);
             this.tabPage4.PerformLayout();
             this.groupBox6.ResumeLayout(false);
@@ -1562,40 +1659,37 @@ namespace FantasyFootballManager
         private System.Windows.Forms.Button btnCalculateTotalsMain;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.GroupBox groupBox2;
-        private System.Windows.Forms.Label label12;
-        private System.Windows.Forms.DataGridView playerMatchupGrid;
         private System.Windows.Forms.Label txtCurrentWeektb2;
-        private System.Windows.Forms.Label label13;
+        private System.Windows.Forms.Label txtTb3Title;
         private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.ComboBox selWeek;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.GroupBox groupBox4;
         private System.Windows.Forms.GroupBox groupBox5;
-        private System.Windows.Forms.ListBox listBox2;
         private System.Windows.Forms.Label label14;
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.Label label10;
-        private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.Label label21;
-        private System.Windows.Forms.Label label22;
-        private System.Windows.Forms.Label label23;
-        private System.Windows.Forms.Label label24;
-        private System.Windows.Forms.TextBox textBox7;
-        private System.Windows.Forms.TextBox textBox8;
-        private System.Windows.Forms.TextBox textBox9;
+        private System.Windows.Forms.Label txtTeam1Name;
+        private System.Windows.Forms.Label txtTotPoints2;
+        private System.Windows.Forms.Label txtWRPoints2;
+        private System.Windows.Forms.Label txtRBPoints2;
+        private System.Windows.Forms.Label txtQBPoints2;
+        private System.Windows.Forms.TextBox txtWRName2;
+        private System.Windows.Forms.TextBox txtRBName2;
+        private System.Windows.Forms.TextBox txtQBName2;
         private System.Windows.Forms.Label label25;
         private System.Windows.Forms.Label label26;
         private System.Windows.Forms.Label label27;
         private System.Windows.Forms.Label label28;
         private System.Windows.Forms.Label label29;
-        private System.Windows.Forms.Label label30;
-        private System.Windows.Forms.Label label20;
-        private System.Windows.Forms.Label label19;
-        private System.Windows.Forms.Label label18;
-        private System.Windows.Forms.Label label17;
-        private System.Windows.Forms.TextBox textBox6;
-        private System.Windows.Forms.TextBox textBox5;
-        private System.Windows.Forms.TextBox textBox4;
+        private System.Windows.Forms.Label txtTeam2Name;
+        private System.Windows.Forms.Label txtTotPoints1;
+        private System.Windows.Forms.Label txtWRPoints1;
+        private System.Windows.Forms.Label txtRBPoints1;
+        private System.Windows.Forms.Label txtQBPoints1;
+        private System.Windows.Forms.TextBox txtWRName1;
+        private System.Windows.Forms.TextBox txtRBName1;
+        private System.Windows.Forms.TextBox txtQBName1;
         private System.Windows.Forms.Label label16;
         private System.Windows.Forms.Label label15;
         private System.Windows.Forms.Label label31;
@@ -1654,14 +1748,23 @@ namespace FantasyFootballManager
         private System.Windows.Forms.DataGridViewTextBoxColumn record;
         private System.Windows.Forms.Button btnSave;
         private System.Windows.Forms.Button btnNextWeek;
-        private System.Windows.Forms.DataGridViewTextBoxColumn opponentOne;
-        private System.Windows.Forms.DataGridViewTextBoxColumn vs;
-        private System.Windows.Forms.DataGridViewTextBoxColumn opponentTwo;
         private System.Windows.Forms.GroupBox groupBox3;
         private System.Windows.Forms.DataGridView lineupsGrid;
         private System.Windows.Forms.DataGridViewTextBoxColumn teamName;
         private System.Windows.Forms.DataGridViewComboBoxColumn sQB;
         private System.Windows.Forms.DataGridViewComboBoxColumn sRB;
         private System.Windows.Forms.DataGridViewComboBoxColumn sWR;
+        private System.Windows.Forms.DataGridViewTextBoxColumn totPoints;
+        private System.Windows.Forms.Label label12;
+        private System.Windows.Forms.DataGridView playerMatchupGrid;
+        private System.Windows.Forms.DataGridViewTextBoxColumn opponentOne;
+        private System.Windows.Forms.DataGridViewTextBoxColumn vs;
+        private System.Windows.Forms.DataGridViewTextBoxColumn opponentTwo;
+        private System.Windows.Forms.Label label36;
+        private System.Windows.Forms.DataGridView playerMatchupsGrid2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn4;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn5;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn6;
+        private System.Windows.Forms.Button button4;
     }
 }

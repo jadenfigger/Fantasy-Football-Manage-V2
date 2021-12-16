@@ -13,7 +13,7 @@ namespace ProjectController
         public string Team;
         public string ID;
 
-        public PlayerModel(string name, string yearsPlayed, string team, string id)
+        public PlayerModel(string name, string yearsPlayed=null, string team=null, string id=null)
         {
             Name = name;
             YearsPlayed = yearsPlayed;

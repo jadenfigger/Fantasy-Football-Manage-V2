@@ -34,22 +34,25 @@ namespace ProjectController
                 var command = new SQLiteCommand(@"CREATE TABLE LeagueInfomation (
                                                 LeagueName    TEXT NOT NULL UNIQUE,
                                                 NumOfTeams    INTEGER NOT NULL,
-                                                StartWeek INTEGER NOT NULL,
                                                 EndWeek   INTEGER NOT NULL,
                                                 CurrWeek INTEGER NOT NULL
                                                 ); ", cnn);
                 command.ExecuteNonQuery();
 
-                var currWeek = ProjectControllerData.cLeague.StartWeek;
+                var currWeek = ProjectControllerData.cLeague.CurrWeek;
 
-                cnn.Execute("insert into LeagueInfomation (LeagueName, NumOfTeams, StartWeek, EndWeek, CurrWeek) values (@leagueName, @numOfTeams, @startWeek, @endWeek, @currWeek)",
-                    new { ProjectControllerData.cLeague.LeagueName, ProjectControllerData.cLeague.NumOfTeams, ProjectControllerData.cLeague.StartWeek, ProjectControllerData.cLeague.EndWeek, currWeek });
+                cnn.Execute("insert into LeagueInfomation (LeagueName, NumOfTeams, EndWeek, CurrWeek) values (@leagueName, @numOfTeams, @endWeek, @currWeek)",
+                    new { ProjectControllerData.cLeague.LeagueName, ProjectControllerData.cLeague.NumOfTeams, ProjectControllerData.cLeague.EndWeek, currWeek });
                 cnn.Close();
             }
         }
 
+      
+
         public static void SaveCLeague()
         {
+            ProjectControllerData.SavePlayerPointTotals();
+
             var path = $"{ProjectControllerData.cLeague.LeagueName}.sqlite";
             using (SQLiteConnection cnn = new SQLiteConnection(LoadConnectionString(path)))
             {
@@ -61,7 +64,7 @@ namespace ProjectController
                 foreach (var team in ProjectControllerData.cLeague.Teams)
                 {
 
-                    var command = new SQLiteCommand($@"CREATE TABLE {team.TeamName} (
+                    var command = new SQLiteCommand($@"CREATE TABLE Team{ProjectControllerData.cLeague.Teams.IndexOf(team)} (
                                                 TeamName TEXT NOT NULL,
                                                 TotalPoints INTEGER NOT NULL,
                                                 StartQB TEXT NOT NULL,
@@ -100,12 +103,48 @@ namespace ProjectController
                     parameters.Add("StartWR", team.PlayerHistory[ProjectControllerData.cWeek][4].ID.ToString(), DbType.String, ParameterDirection.Input);
                     parameters.Add("BackupWR", team.PlayerHistory[ProjectControllerData.cWeek][5].ID.ToString(), DbType.String, ParameterDirection.Input);
 
-                    cnn.Execute($"insert into {team.TeamName} values (@TeamName, @TotalPoints, @StartQB, @BackupQB, @StartRB, @BackupRB, @StartWR, @BackupWR)",
+                    cnn.Execute($"insert into Team{ProjectControllerData.cLeague.Teams.IndexOf(team)} values (@TeamName, @TotalPoints, @StartQB, @BackupQB, @StartRB, @BackupRB, @StartWR, @BackupWR)",
                         parameters);
                 }
                 cnn.Close();
             }
-            ProjectControllerData.SaveSchedule<ScheduleModel>();
+            ProjectControllerData.SaveSchedule();
+        }
+
+        public static void LoadLeague(string name) 
+        {
+            var path = $"{name}.sqlite";
+
+            using (IDbConnection cnn = new SQLiteConnection(LoadConnectionString(path)))
+            {
+                var leagueInfomation = cnn.Query($"select * from LeagueInfomation", new DynamicParameters()).ToList();
+
+                ProjectControllerData.cLeague = new LeagueModel(leagueInfomation[0].LeagueName.ToString(), 
+                              Convert.ToInt32(leagueInfomation[0].NumOfTeams), 
+                              Convert.ToInt32(leagueInfomation[0].EndWeek), 
+                              Convert.ToInt32(leagueInfomation[0].CurrWeek));
+                
+                for (var i = 0; i < ProjectControllerData.cLeague.NumOfTeams; i++)
+                {
+                    var teamInfo = cnn.Query($"select * from Team{i}", new DynamicParameters()).ToList();
+
+                    var t = new TeamModel(teamInfo[0].TeamName);
+
+
+                    t.PlayerHistory.Add(ProjectControllerData.cLeague.CurrWeek, new Dictionary<int, PlayerModel>());
+                        
+                    t.PlayerHistory[ProjectControllerData.cLeague.CurrWeek].Add(0, WebScraper.GetPlayerByID(teamInfo[0].StartQB));
+                    t.PlayerHistory[ProjectControllerData.cLeague.CurrWeek].Add(1, WebScraper.GetPlayerByID(teamInfo[0].BackupQB));
+                    t.PlayerHistory[ProjectControllerData.cLeague.CurrWeek].Add(2, WebScraper.GetPlayerByID(teamInfo[0].StartRB));
+                    t.PlayerHistory[ProjectControllerData.cLeague.CurrWeek].Add(3, WebScraper.GetPlayerByID(teamInfo[0].BackupRB));
+                    t.PlayerHistory[ProjectControllerData.cLeague.CurrWeek].Add(4, WebScraper.GetPlayerByID(teamInfo[0].StartWR));
+                    t.PlayerHistory[ProjectControllerData.cLeague.CurrWeek].Add(5, WebScraper.GetPlayerByID(teamInfo[0].BackupWR));
+
+                    ProjectControllerData.cLeague.Teams.Add(t);
+                }
+                ProjectControllerData.LoadSchedule();
+                ProjectControllerData.ReadPlayerPointTotals();
+            }
         }
 
         public static void AddUser(string firstName, string lastName, string username, string password)

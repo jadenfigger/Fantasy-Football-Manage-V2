@@ -100,6 +100,7 @@ namespace FantasyFootballManager
             this.btnNextWeek.TabIndex = 13;
             this.btnNextWeek.Text = "Next Week";
             this.btnNextWeek.UseVisualStyleBackColor = true;
+            this.btnNextWeek.Visible = false;
             // 
             // scheduleGrid
             // 
@@ -130,20 +131,20 @@ namespace FantasyFootballManager
             this.scheduleGrid.DefaultCellStyle = dataGridViewCellStyle2;
             this.scheduleGrid.Location = new System.Drawing.Point(16, 33);
             this.scheduleGrid.Name = "scheduleGrid";
+            this.scheduleGrid.ReadOnly = true;
             this.scheduleGrid.RowHeadersVisible = false;
             this.scheduleGrid.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             this.scheduleGrid.RowTemplate.Height = 24;
             this.scheduleGrid.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.scheduleGrid.Size = new System.Drawing.Size(659, 300);
             this.scheduleGrid.TabIndex = 12;
-            this.scheduleGrid.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.scheduleGrid_CellClick);
-            this.scheduleGrid.CellLeave += new System.Windows.Forms.DataGridViewCellEventHandler(this.scheduleGrid_CellLeave);
             // 
             // opponentOne
             // 
             this.opponentOne.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
             this.opponentOne.HeaderText = "Opponent One";
             this.opponentOne.Name = "opponentOne";
+            this.opponentOne.ReadOnly = true;
             // 
             // vs
             // 
@@ -157,6 +158,7 @@ namespace FantasyFootballManager
             this.opponentTwo.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
             this.opponentTwo.HeaderText = "Opponent Two";
             this.opponentTwo.Name = "opponentTwo";
+            this.opponentTwo.ReadOnly = true;
             // 
             // label2
             // 

@@ -21,7 +21,7 @@ namespace FantasyFootballManager
 
         private void btnCreateLeague_Click(object sender, EventArgs e)
         {
-            if (txtLName.Text.Equals("") || txtNumOfTeams.Text.Equals("") || sStartWeek.Value >= sEndWeek.Value)
+            if (txtLName.Text.Equals("") || txtNumOfTeams.Text.Equals(""))
             {
                 MessageBox.Show("Please fill out all fields", "Invalid Entry", MessageBoxButtons.OK);
                 txtLName.Focus();
@@ -34,7 +34,7 @@ namespace FantasyFootballManager
                 return;
             }
 
-            ProjectControllerData.cLeague = new LeagueModel(txtLName.Text, Convert.ToInt32(txtNumOfTeams.Text), sStartWeek.Value, sEndWeek.Value);
+            ProjectControllerData.cLeague = new LeagueModel(txtLName.Text, Convert.ToInt32(txtNumOfTeams.Text), Convert.ToInt32(sEndWeek.Value), WebScraper.GetCurrentWeek());
             SqlDataAccess.CreateLeague();
 
             AddTeams atForm = new AddTeams();
@@ -64,6 +64,18 @@ namespace FantasyFootballManager
                 SizeF size = e.Graphics.MeasureString(item.ToString(), e.Font);
                 e.Graphics.DrawString(item.ToString(), e.Font, brush, e.Bounds.Left + (e.Bounds.Width / 2 - size.Width / 2), e.Bounds.Top + (e.Bounds.Height / 2 - size.Height / 2));
             }
+        }
+
+        private void lbAllLeagues_DoubleClick(object sender, EventArgs e)
+        {
+            var leagueSelectedName = lbAllLeagues.SelectedItem.ToString();
+
+            SqlDataAccess.LoadLeague(leagueSelectedName);
+
+            LeagueManagment lmForm = new LeagueManagment();
+            this.Hide();
+            lmForm.ShowDialog();
+            this.Close();
         }
     }
 }

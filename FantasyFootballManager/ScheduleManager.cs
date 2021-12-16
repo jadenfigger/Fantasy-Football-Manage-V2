@@ -22,33 +22,7 @@ namespace FantasyFootballManager
 
         private void ScheduleManager_Load(object sender, EventArgs e)
         {
-
-            if (ProjectControllerData.cLeague == null)
-            {
-                ProjectControllerData.cLeague = new LeagueModel("Test", 4, 1, 10);
-                ProjectControllerData.cLeague.Teams.Add(new TeamModel("team1"));
-                ProjectControllerData.cLeague.Teams.Add(new TeamModel("team2"));
-                ProjectControllerData.cLeague.Teams.Add(new TeamModel("team3"));
-                ProjectControllerData.cLeague.Teams.Add(new TeamModel("team4"));
-
-            }
-            dt = new List<string>();
-
-            for (var i = ProjectControllerData.cLeague.StartWeek; i <= ProjectControllerData.cLeague.EndWeek; i++)
-            {
-                scheduleGrid.Rows.Add();
-                scheduleGrid.Rows[i-1].Height = 35;
-            }
-            foreach (var name in ProjectControllerData.cLeague.Teams)
-            {
-                dt.Add(name.TeamName);
-            }
-
-            var lCol = (DataGridViewComboBoxColumn)scheduleGrid.Columns[0];
-            var rCol = (DataGridViewComboBoxColumn)scheduleGrid.Columns[2];
-
-            lCol.DataSource = dt;
-            rCol.DataSource = dt;
+            
         }
 
         private void scheduleGrid_CellClick(object sender, DataGridViewCellEventArgs e)
@@ -95,8 +69,11 @@ namespace FantasyFootballManager
         {
             ProjectControllerData.cLeague.GenerateRandomSchedule();
 
-            SqlDataAccess.SaveCLeague();
 
+            ProjectControllerData.cLeague.PointCalculationVariables = new List<double>() { 300, 100, 150, 20, 6, 0, 10, 0.1, 6, 1, 6, 10 };
+            ProjectControllerData.cLeague.CatchupPointsToCurrWeek();
+
+            SqlDataAccess.SaveCLeague();
 
             LeagueManagment lmForm = new LeagueManagment();
             this.Hide();
@@ -106,7 +83,7 @@ namespace FantasyFootballManager
 
         private void btnFinSchedule_Click(object sender, EventArgs e)
         {
-            if (ProjectControllerData.cLeague.Schedule.Schedule != null)
+            if (ProjectControllerData.cLeague.Schedule != null)
             {
                 SqlDataAccess.SaveCLeague();
             }
